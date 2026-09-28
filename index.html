@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School CBT Portal</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="desktop-titlebar">
+      <div class="desktop-titlebar__left">
+        <img src="/student-app-icon.svg" alt="School CBT Student" class="desktop-titlebar__icon" />
+        <span>School CBT Student</span>
+      </div>
+      <div class="desktop-titlebar__controls">
+        <button id="studentAppMinimize" class="titlebar-button" aria-label="Minimize">−</button>
+        <button id="studentAppClose" class="titlebar-button danger" aria-label="Close">×</button>
+      </div>
+    </div>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="topbar__identity">
+          <div class="campus-seal" aria-label="School crest emblem">
+            <span class="campus-seal__inner">S</span>
+          </div>
+          <div>
+            <p class="eyebrow">School CBT</p>
+            <h1>School Examination Management System</h1>
+          </div>
+        </div>
+        <div class="nav-actions">
+          <button id="logoutBtn" class="premium-logout secondary hidden" type="button" aria-label="Logout">
+            <span class="logout-icon" aria-hidden="true">⎋</span>
+            <span>Logout</span>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section id="landingPage" class="panel hero auth-landing">
+          <div class="auth-shell">
+            <div class="auth-intro">
+              <div class="school-brand-badge">
+                <span class="school-brand-badge__mark">S</span>
+                <span class="school-brand-badge__text">School Excellence</span>
+              </div>
+              <p class="eyebrow">Campus CBT</p>
+              <h2>Launch your school on a secure digital exam platform.</h2>
+              <p>
+                Create a trusted exam environment for your institution with streamlined onboarding,
+                school administration, exams, and performance tracking.
+              </p>
+
+              <ul class="feature-list">
+                <li>School onboarding in minutes</li>
+                <li>Teacher-led question setup</li>
+                <li>Student exam tracking and reporting</li>
+              </ul>
+            </div>
+
+            <div class="auth-panel-wrapper">
+              <div class="auth-card auth-card--switchable">
+                <div class="auth-mode-toggle" aria-label="Authentication mode switcher">
+                  <button type="button" class="auth-mode-btn active" data-auth-mode="signup">Sign Up</button>
+                  <button type="button" class="auth-mode-btn" data-auth-mode="login">Login</button>
+                </div>
+
+                <div class="auth-form-panel" data-auth-form="signup">
+                  <form id="loginForm" class="auth-form auth-form--signup" data-mode="school-registration">
+                    <div class="auth-card__header">
+                      <span class="auth-card__tag">New School</span>
+                      <h3>Create account</h3>
+                    </div>
+
+                    <div class="field">
+                      <label for="schoolName">School Name</label>
+                      <input id="schoolName" type="text" placeholder="e.g. Heritage Academy" required />
+                    </div>
+                    <div class="field">
+                      <label for="schoolType">School Type</label>
+                      <select id="schoolType">
+                        <option value="College">College</option>
+                        <option value="University">University</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label for="contactPerson">Contact Person</label>
+                      <input id="contactPerson" type="text" placeholder="e.g. Mrs. Adebayo" required />
+                    </div>
+                    <div class="field">
+                      <label for="schoolEmail">Official Email</label>
+                      <input id="schoolEmail" type="email" placeholder="e.g. admin@school.edu" required />
+                    </div>
+                    <div class="field">
+                      <label for="schoolPassword">Create Password</label>
+                      <input id="schoolPassword" type="password" minlength="12" autocomplete="new-password" placeholder="At least 12 characters" required />
+                    </div>
+                    <div class="field">
+                      <label for="schoolPhone">Phone Number</label>
+                      <input id="schoolPhone" type="tel" placeholder="e.g. +234 800 000 0000" required />
+                    </div>
+                    <div class="field">
+                      <label for="schoolAddress">School Address</label>
+                      <textarea id="schoolAddress" rows="3" placeholder="Enter full school address" required></textarea>
+                    </div>
+                    <div class="field">
+                      <label for="schoolLogo">School Logo</label>
+                      <label class="logo-upload-box" for="schoolLogo" aria-label="Upload school logo">
+                        <input id="schoolLogo" type="file" accept="image/*" aria-label="Upload school logo" />
+                        <span class="logo-upload-placeholder">Choose school logo</span>
+                      </label>
+                    </div>
+                    <button type="submit" class="primary">Create School Account</button>
+                    <p id="loginMessage" class="status-text"></p>
+                  </form>
+                </div>
+
+                <div class="auth-form-panel hidden" data-auth-form="login">
+                  <form id="schoolLoginForm" class="auth-form auth-form--login">
+                    <div class="auth-card__header">
+                      <span class="auth-card__tag auth-card__tag--alt">Existing School</span>
+                      <h3>Welcome back</h3>
+                    </div>
+
+                    <div class="field">
+                      <label for="schoolLoginRole">Account Type</label>
+                      <select id="schoolLoginRole">
+                        <option value="admin">School Admin</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label id="schoolLoginIdentifierLabel" for="schoolLoginIdentifier">School Email</label>
+                      <input id="schoolLoginIdentifier" type="email" placeholder="Enter school email" autocomplete="username" required />
+                    </div>
+                    <div class="field">
+                      <label for="schoolLoginPassword">Password</label>
+                      <input id="schoolLoginPassword" type="password" autocomplete="current-password" placeholder="Enter password" required />
+                    </div>
+
+                    <button type="submit" class="secondary">Access Dashboard</button>
+                    <p id="schoolLoginMessage" class="status-text" aria-live="polite"></p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="developer-contact">
+            <p class="mini-label">Developer Contact</p>
+            <strong>TimPriest Solutions</strong>
+            <p>Email: <a href="mailto:hello@techbridgeschool.com">hello@techbridgeschool.com</a></p>
+            <p>Phone: <a href="tel:+2347063232974">+234 706 323 2974</a></p>
+          </div>
+        </section>
+
+        <section id="adminSection" class="page hidden">
+          <div class="dashboard-shell">
+            <aside class="sidebar">
+              <div class="brand-block">
+                <div class="brand-mark">S</div>
+                <div>
+                  <p class="eyebrow small">School</p>
+                  <h3>SchoolBoard</h3>
+                </div>
+              </div>
+
+              <button class="sidebar-menu-toggle" type="button" aria-expanded="false" aria-controls="adminNavGroup">
+                <span class="sidebar-menu-toggle__handle" aria-hidden="true"></span>
+                <span class="sidebar-menu-toggle__icon">☰</span>
+                <span>Menu</span>
+              </button>
+
+              <div id="adminNavGroup" class="nav-group is-open">
+                <span class="nav-label">Overview</span>
+                <button class="nav-item active" data-nav="dashboard" data-section="dashboard"><span class="nav-icon">🏠</span> Dashboard</button>
+                <button class="nav-item" data-nav="exams" data-section="exams"><span class="nav-icon">📝</span> Exams</button>
+                <button class="nav-item" data-nav="students" data-section="students"><span class="nav-icon">👩‍🎓</span> Students</button>
+                <button class="nav-item" data-nav="student-result" data-section="student-result"><span class="nav-icon">📄</span> Student Result</button>
+                <button class="nav-item" data-nav="account-management" data-section="account-management"><span class="nav-icon">👥</span> Account Management</button>
+                <button class="nav-item" data-nav="pending-questions" data-section="pending-questions"><span class="nav-icon">⏳</span> Pending Questions</button>
+                <button class="nav-item" data-nav="schools" data-section="schools"><span class="nav-icon">🏫</span> Registered Schools</button>
+                <button class="nav-item" data-nav="reports" data-section="reports"><span class="nav-icon">📊</span> Reports</button>
+              </div>
+            </aside>
+
+            <div class="content-panel">
+              <div class="admin-page active" data-admin-page="dashboard">
+                <div class="toolbar">
+                  <div>
+                    <p class="eyebrow">Admin</p>
+                    <h2>Administration Dashboard</h2>
+                  </div>
+                  <button id="printAdminReport" class="secondary">Print report</button>
+                </div>
+
+                <div id="adminStats" class="stats-grid"></div>
+
+                <div id="adminAnalytics" class="analytics-panel"></div>
+
+                <div class="panel campus-overview-panel">
+                  <div class="panel-head">
+                    <h3>Exam Centre Overview</h3>
+                    <span class="pill success">Campus Live</span>
+                  </div>
+                  <div class="campus-overview-grid">
+                    <div class="campus-slideshow" aria-label="CBT hall slideshow">
+                      <div class="campus-slideshow__track">
+                        <figure class="campus-slide">
+                          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Students writing exams in a computer-based testing hall" />
+                          <figcaption>Computer lab exam session</figcaption>
+                        </figure>
+                        <figure class="campus-slide">
+                          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Students focused during an exam in a CBT room" />
+                          <figcaption>Focused assessment environment</figcaption>
+                        </figure>
+                        <figure class="campus-slide">
+                          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80" alt="Academic hall with students taking digital exams" />
+                          <figcaption>Digital examination hall</figcaption>
+                        </figure>
+                      </div>
+                    </div>
+
+                    <aside class="campus-status-panel">
+                      <div class="status-header">
+                        <span class="mini-label">Live status</span>
+                        <span class="status-dot"></span>
+                      </div>
+                      <h4>Exam Center Status</h4>
+                      <ul class="status-list">
+                        <li>
+                          <span>Active labs</span>
+                          <strong>08</strong>
+                        </li>
+                        <li>
+                          <span>Students seated</span>
+                          <strong>240</strong>
+                        </li>
+                        <li>
+                          <span>Monitoring</span>
+                          <strong>97%</strong>
+                        </li>
+                        <li>
+                          <span>Security check</span>
+                          <strong>Normal</strong>
+                        </li>
+                      </ul>
+                      <div class="status-summary">
+                        <small>Network uptime</small>
+                        <strong>99.8%</strong>
+                      </div>
+                    </aside>
+                  </div>
+                </div>
+
+                <div class="admin-tabs-panel">
+                  <div class="tab-row" id="adminTabs">
+                    <button class="tab-button active" data-admin-tab="overview">Overview</button>
+                    <button class="tab-button" data-admin-tab="attendance">Attendance</button>
+                  </div>
+                  <div class="export-row">
+                    <button id="exportAdminExcel" class="secondary small">Export Excel</button>
+                    <button id="exportAdminPdf" class="secondary small">Export PDF</button>
+                  </div>
+                </div>
+
+                <div id="adminTabContent" class="tab-content"></div>
+
+                <div class="panel-grid two-col">
+                  <div class="panel dashboard-panel">
+                    <div class="panel-head">
+                      <h3>Recent Results</h3>
+                      <span class="pill success">Live</span>
+                    </div>
+                    <div id="recentResults" class="list-table"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="admin-page hidden" data-admin-page="exams">
+                <div class="toolbar">
+                  <div>
+                    <p class="eyebrow">Admin</p>
+                    <h2>Exams Management</h2>
+                  </div>
+                </div>
+                <div class="panel dashboard-panel">
+                  <div class="panel-head">
+                    <h3>Exam Schedule</h3>
+                    <span class="pill success">Live</span>
+                  </div>
+                  <div class="data-panel">
+                    <table class="data-table">
+                      <thead>
+                        <tr>
+                          <th>Exam</th>
+                          <th>Class</th>
+                          <th>Venue</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>Mid-Term CBT</td><td>SS2A</td><td>Hall 1</td><td><span class="badge approved">Active</span></td></tr>
+                        <tr><td>Biology Quiz</td><td>SS1B</td><td>Hall 3</td><td><span class="badge pending">Queued</span></td></tr>
+                        <tr><td>English Assessment</td><td>JSS3</td><td>Hall 5</td><td><span class="badge approved">Scheduled</span></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="admin-page hidden" data-admin-page="student-result">
+                <div class="toolbar">
+                  <div>
+                    <p class="eyebrow">Admin</p>
+                    <h2>Student Result</h2>
+                  </div>
+                </div>
+                <div class="panel dashboard-panel">
+                  <div class="panel-head">
+                    <h3>Result Overview</h3>
+                    <span class="pill success">Published</span>
+                  </div>
+                  <div class="data-panel">
+                    <table class="data-table">
+                      <thead>
+                        <tr>
+                          <th>Student</th>
+                          <th>Class</th>
+                          <th>Score</th>
+                          <th>Grade</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>Jane Doe</td><td>SS2A</td><td>92/100</td><td><span class="badge approved">A</span></td></tr>
+                        <tr><td>John Smith</td><td>SS1B</td><td>84/100</td><td><span class="badge approved">B</span></td></tr>
+                        <tr><td>Aisha Bello</td><td>JSS3</td><td>78/100</td><td><span class="badge pending">C</span></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="admin-page hidden" data-admin-page="account-management">
+                <div class="toolbar">
+                  <div>
+                    <p class="eyebrow">Admin</p>
+                    <h2>Teacher/Student Login</h2>
+                  </div>
+                </div>
+
+                <div class="panel dashboard-panel">
+                  <div class="tab-row" id="accountLoginTabs">
+                    <button class="tab-button active" data-account-view="student" type="button">Student Login</button>
+                    <button class="tab-button" data-account-view="teacher" type="button">Teacher Login</button>
+                  </div>
+
+                  <div class="account-login-panel" data-account-panel="student">
+                    <div class="panel-head">
+                      <h3>Create Student Login</h3>
+                      <span class="pill success">Admin</span>
+                    </div>
+                    <form id="studentCreateFormPage" class="question-form">
+                      <div class="field">
+                        <label for="studentFullNamePage">Student Name</label>
+                        <input id="studentFullNamePage" type="text" placeholder="e.g. Jane Doe" required />
+                      </div>
+                      <div class="field">
+                        <label for="studentClassNamePage">Class</label>
+                        <input id="studentClassNamePage" type="text" placeholder="e.g. SS2A" required />
+                      </div>
+                      <div class="field">
+                        <label for="studentIdNumberPage">Student ID</label>
+                        <input id="studentIdNumberPage" type="text" placeholder="e.g. ST-010" required />
+                      </div>
+                      <button class="primary" type="submit">Create Student Account</button>
+                      <p id="studentCreateMessagePage" class="status-text"></p>
+                    </form>
+                  </div>
+
+                  <div class="account-login-panel hidden" data-account-panel="teacher">
+                    <div class="panel-head">
+                      <h3>Create Teacher Login</h3>
+                      <span class="pill success">Admin</span>
+                    </div>
+                    <form id="teacherRegisterFormPage" class="question-form">
+                      <div class="field">
+                        <label for="teacherNamePage">Full Name</label>
+                        <input id="teacherNamePage" type="text" placeholder="e.g. Mr. Adebayo" required />
+                      </div>
+                      <div class="field">
+                        <label for="teacherEmailPage">Email</label>
+                        <input id="teacherEmailPage" type="email" placeholder="e.g. teacher.adebayo@school.com" required />
+                      </div>
+                      <div class="field">
+                        <label for="teacherPasswordPage">Password</label>
+                        <input id="teacherPasswordPage" type="password" placeholder="Create password" required />
+                      </div>
+                      <button class="primary" type="submit">Create Teacher Account</button>
+                      <p id="teacherRegisterMessagePage" class="status-text"></p>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="admin-page hidden" data-admin-page="pending-questions">
+                <div class="toolbar">
+                  <div>
+                    <p class="eyebrow">Admin</p>
+                    <h2>Pending Questions</h2>
+                  </div>
+                </div>
+                <div class="panel dashboard-panel">
+                  <div class="panel-head">
+                    <h3>Question Review Queue</h3>
+                    <span class="pill">Awaiting review</span>
+                  </div>
+                  <div id="pendingQuestionsPage" class="list-table"></div>
+                </div>
+              </div>
+
+              <div class="admin-page hidden" data-admin-page="schools">
+                <div class="toolbar">
+                  <div>
+                    <p class="eyebrow">Admin</p>
+                    <h2>Registered Schools</h2>
+                  </div>
+                </div>
+                <div class="panel dashboard-panel">
+                  <div class="panel-head">
+                    <h3>School Directory</h3>
+                    <span class="pill success">Saved database</span>
+                  </div>
+                  <div id="registeredSchoolsTable" class="list-table"></div>
+                </div>
+              </div>
+
+              <div class="admin-page hidden" data-admin-page="students">
+                <div class="toolbar">
+                  <div>
+                    <p class="eyebrow">Admin</p>
+                    <h2>Students Directory</h2>
+                  </div>
+                </div>
+                <div class="panel dashboard-panel">
+                  <div class="panel-head">
+                    <h3>Student Records</h3>
+                    <span class="pill success">Verified</span>
+                  </div>
+                  <div class="data-panel">
+                    <table class="data-table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Class</th>
+                          <th>Student ID</th>
+                          <th>Attendance</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>Jane Doe</td><td>SS2A</td><td>ST-010</td><td>96%</td></tr>
+                        <tr><td>John Smith</td><td>SS1B</td><td>ST-021</td><td>92%</td></tr>
+                        <tr><td>Aisha Bello</td><td>JSS3</td><td>ST-031</td><td>98%</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="admin-page hidden" data-admin-page="reports">
+                <div class="toolbar">
+                  <div>
+                    <p class="eyebrow">Admin</p>
+                    <h2>Reports</h2>
+                  </div>
+                </div>
+                <div class="panel dashboard-panel">
+                  <div class="panel-head">
+                    <h3>Campus Reports</h3>
+                    <span class="pill">Summary</span>
+                  </div>
+                  <div class="data-panel">
+                    <div class="summary-grid">
+                      <div class="summary-chip"><span>Attendance</span><strong>94%</strong></div>
+                      <div class="summary-chip"><span>Pass Rate</span><strong>87%</strong></div>
+                      <div class="summary-chip"><span>Question Bank</span><strong>142</strong></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="teacherSection" class="page hidden">
+          <div class="dashboard-shell">
+            <aside class="sidebar">
+              <div class="brand-block">
+                <div class="brand-mark">T</div>
+                <div>
+                  <p class="eyebrow small">Teacher</p>
+                  <h3>Exam Builder</h3>
+                </div>
+              </div>
+
+              <button class="sidebar-menu-toggle" type="button" aria-expanded="false" aria-controls="teacherNavGroup">
+                <span class="sidebar-menu-toggle__handle" aria-hidden="true"></span>
+                <span class="sidebar-menu-toggle__icon">☰</span>
+                <span>Menu</span>
+              </button>
+
+              <div id="teacherNavGroup" class="nav-group is-open">
+                <span class="nav-label">Menu</span>
+                <button class="nav-item active" data-nav="create-question" data-section="create-question"><span class="nav-icon">✍️</span> Create New Questions</button>
+                <button class="nav-item" data-nav="question-bank" data-section="question-bank"><span class="nav-icon">📚</span> Question Banks</button>
+                <button class="nav-item" data-nav="submitted-exams" data-section="submitted-exams"><span class="nav-icon">✅</span> Submitted Exams</button>
+                <button class="nav-item" data-nav="teacher-results" data-section="teacher-results"><span class="nav-icon">📈</span> Results</button>
+              </div>
+            </aside>
+
+            <div class="content-panel">
+              <div class="toolbar">
+                <div>
+                  <p class="eyebrow">Teacher</p>
+                  <h2>Teachers Dashboard</h2>
+                </div>
+                <div class="toolbar-meta">
+                  <span id="teacherWelcomeName" class="pill success">Welcome</span>
+                </div>
+                <div id="teacherToolbarActions" class="export-row hidden">
+                  <button id="printTeacherReport" class="secondary small">Print questions</button>
+                  <button id="exportTeacherExcel" class="secondary small">Export Excel</button>
+                  <button id="exportTeacherPdf" class="secondary small">Export PDF</button>
+                </div>
+              </div>
+
+              <div id="teacherQuestionBankPage" class="teacher-page">
+                <div class="panel-grid two-col">
+                  <div class="panel dashboard-panel">
+                    <div class="panel-head">
+                      <h3>New Question</h3>
+                      <span class="pill">Draft</span>
+                    </div>
+                    <form id="questionForm" class="question-form question-form-wide">
+                      <div class="field">
+                        <label for="subject">Subject</label>
+                        <input id="subject" type="text" placeholder="Mathematics" required />
+                      </div>
+                      <div class="field">
+                        <label for="questionText">Question</label>
+                        <textarea id="questionText" rows="7" placeholder="Type your question here" required></textarea>
+                      </div>
+                      <div class="options-grid">
+                        <div class="field">
+                          <label for="optionA">Option A</label>
+                          <input id="optionA" type="text" required />
+                        </div>
+                        <div class="field">
+                          <label for="optionB">Option B</label>
+                          <input id="optionB" type="text" required />
+                        </div>
+                        <div class="field">
+                          <label for="optionC">Option C</label>
+                          <input id="optionC" type="text" required />
+                        </div>
+                        <div class="field">
+                          <label for="optionD">Option D</label>
+                          <input id="optionD" type="text" required />
+                        </div>
+                      </div>
+                      <div class="question-controls-row">
+                        <div class="field question-control-field">
+                          <label for="correctIndex">Correct Option</label>
+                          <select id="correctIndex">
+                            <option value="0">A</option>
+                            <option value="1">B</option>
+                            <option value="2">C</option>
+                            <option value="3">D</option>
+                          </select>
+                        </div>
+                        <div class="question-step-actions">
+                          <button type="button" class="question-nav-btn" id="prevQuestionBtn">Previous</button>
+                          <button type="button" class="question-nav-btn" id="nextQuestionBtn">Next</button>
+                        </div>
+                      </div>
+
+                      <div class="question-footer-bar">
+                        <div class="question-footer-meta">
+                          <span class="question-footer-indicator"><span class="status-swatch"></span> Status</span>
+                          <span class="question-footer-status" id="questionMessage"> </span>
+                        </div>
+                        <div class="question-footer-actions">
+                          <span class="footer-mini-label"><span aria-hidden="true">📝</span> Draft</span>
+                          <button class="primary" type="submit">Submit for Admin Review</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div id="teacherApprovedQuestionBankPage" class="teacher-page hidden">
+                <div class="panel dashboard-panel">
+                  <div class="panel-head">
+                    <h3>Question Banks</h3>
+                    <span class="pill success">Approved</span>
+                  </div>
+                  <div id="teacherApprovedQuestions" class="list-table"></div>
+                </div>
+              </div>
+
+              <div id="teacherSubmittedExamsPage" class="teacher-page hidden">
+                <div class="panel dashboard-panel">
+                  <div class="panel-head">
+                    <h3>Submitted Exams</h3>
+                    <span class="pill">Review queue</span>
+                  </div>
+                  <div id="teacherSubmittedExams" class="list-table"></div>
+                </div>
+              </div>
+
+              <div id="teacherResultsPage" class="teacher-page hidden">
+                <div id="teacherAnalytics" class="teacher-analytics"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="studentSection" class="page hidden">
+          <div class="dashboard-shell">
+            <aside class="sidebar">
+              <div class="brand-block">
+                <div class="brand-mark">S</div>
+                <div>
+                  <p class="eyebrow small">Student</p>
+                  <h3>My Portal</h3>
+                </div>
+              </div>
+
+              <button class="sidebar-menu-toggle" type="button" aria-expanded="false" aria-controls="studentNavGroup">
+                <span class="sidebar-menu-toggle__handle" aria-hidden="true"></span>
+                <span class="sidebar-menu-toggle__icon">☰</span>
+                <span>Menu</span>
+              </button>
+
+              <div id="studentNavGroup" class="nav-group is-open">
+                <span class="nav-label">Student</span>
+                <button class="nav-item active" data-nav="profile" data-section="profile"><span class="nav-icon">👤</span> Profile</button>
+                <button class="nav-item" data-nav="student-exam" data-section="exam"><span class="nav-icon">🧪</span> Exam</button>
+              </div>
+            </aside>
+
+            <div class="content-panel">
+              <div class="toolbar">
+                <div>
+                  <p class="eyebrow">Student</p>
+                  <h2>Student Dashboard</h2>
+                </div>
+              </div>
+
+              <div id="studentProfilePage" class="student-page">
+                <div class="panel-grid one-col">
+                  <div class="panel dashboard-panel">
+                    <div class="panel-head">
+                      <h3>Student Details</h3>
+                      <span class="pill success">Verified</span>
+                    </div>
+                    <div id="studentDetails" class="student-card"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="studentExamPage" class="student-page hidden">
+                <div class="panel dashboard-panel">
+                  <div class="panel-head">
+                    <h3>Exam Access</h3>
+                    <span class="pill">Ready</span>
+                  </div>
+                  <div class="exam-access-card">
+                    <p>Start a new CBT session for your selected assessment.</p>
+                    <button class="primary" id="startExamBtn">Start Exam</button>
+                  </div>
+                  <div id="examStatus" class="status-text"></div>
+                </div>
+              </div>
+
+              <div id="studentAttemptPage" class="student-page hidden">
+                <div id="examContainer" class="panel exam-panel">
+                  <div class="exam-topbar">
+                    <h3>Attempt Exam</h3>
+                    <div class="timer-box">
+                      <span>Time Left</span>
+                      <strong id="timerDisplay">30:00</strong>
+                    </div>
+                  </div>
+                  <div id="examQuestions" class="question-stack"></div>
+                  <div class="submit-row">
+                    <button id="submitExamBtn" class="primary">Submit Exam</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
