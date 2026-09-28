@@ -1,0 +1,140 @@
+{
+  "users": [
+    {
+      "id": "admin-1",
+      "role": "admin",
+      "username": "admin",
+      "password": "admin123",
+      "name": "School Administrator"
+    },
+    {
+      "id": "teacher-test",
+      "role": "teacher",
+      "username": "teacher.test",
+      "email": "teacher.test@school.edu",
+      "password": "teacher123",
+      "name": "Adebayo"
+    },
+    {
+      "id": "student-1",
+      "role": "student",
+      "username": "student1",
+      "password": "student123",
+      "name": "Alice Okafor",
+      "className": "SS2A",
+      "studentId": "ST-001"
+    },
+    {
+      "id": "student-2",
+      "role": "student",
+      "username": "student2",
+      "password": "student123",
+      "name": "Daniel Smith",
+      "className": "SS2A",
+      "studentId": "ST-002"
+    },
+    
+  ],
+  "questions": [
+    {
+      "id": "q-101",
+      "teacherId": "teacher-1",
+      "teacherName": "Mr. Johnson",
+      "subject": "Mathematics",
+      "question": "What is the value of 7 + 9?",
+      "options": [
+        "12",
+        "14",
+        "16",
+        "18"
+      ],
+      "correctIndex": 2,
+      "status": "approved",
+      "createdAt": "2026-09-01T08:00:00.000Z"
+    },
+    {
+      "id": "q-102",
+      "teacherId": "teacher-1",
+      "teacherName": "Mr. Johnson",
+      "subject": "English",
+      "question": "Choose the correct pronoun: \"The teacher called ___ to the board.\"",
+      "options": [
+        "he",
+        "him",
+        "his",
+        "hers"
+      ],
+      "correctIndex": 1,
+      "status": "approved",
+      "createdAt": "2026-09-01T09:00:00.000Z"
+    },
+    {
+      "id": "q-1790584814380",
+      "teacherId": "teacher-1",
+      "teacherName": "Mr. Johnson",
+      "subject": "English",
+      "question": "A________ is a name of person animal place or things",
+      "options": [
+        "Noun",
+        "Place",
+        "Student",
+        "Core Value"
+      ],
+      "correctIndex": 0,
+      "status": "approved",
+      "createdAt": "2026-09-28T08:40:14.380Z"
+    }
+  ],
+  "results": [
+    {
+      "id": "result-1790584953030",
+      "studentId": "ST-001",
+      "studentName": "Alice Okafor",
+      "className": "SS2A",
+      "score": 3,
+      "total": 3,
+      "submittedAt": "2026-09-28T08:42:33.031Z"
+    },
+    {
+      "id": "result-1790586044072",
+      "studentId": "ST-001",
+      "studentName": "Alice Okafor",
+      "className": "SS2A",
+      "score": 0,
+      "total": 3,
+      "submittedAt": "2026-09-28T09:00:44.072Z"
+    }
+  ],
+  "schools": [
+    {
+      "id": "school-1790601385079",
+      "name": "Harbor Academy",
+      "type": "Secondary",
+      "contactPerson": "Mrs. Adebayo",
+      "email": "admin@harboracademy.edu",
+      "phone": "+2348000000000",
+      "address": "12 Lekki Road, Lagos",
+      "createdAt": "2026-09-28T13:16:25.079Z"
+    },
+    {
+      "id": "school-1790601497647",
+      "name": "Harbor Academy",
+      "type": "Secondary",
+      "contactPerson": "Mrs. Adebayo",
+      "email": "admin@harboracademy.edu",
+      "phone": "+2348000000000",
+      "address": "12 Lekki Road, Lagos",
+      "createdAt": "2026-09-28T13:18:17.647Z"
+    },
+    {
+      "id": "school-1790601628401",
+      "name": "Harbor Academy",
+      "type": "Secondary",
+      "contactPerson": "Mrs. Adebayo",
+      "email": "admin@harboracademy.edu",
+      "phone": "+2348000000000",
+      "address": "12 Lekki Road, Lagos",
+      "createdAt": "2026-09-28T13:20:28.401Z"
+    }
+  ]
+}

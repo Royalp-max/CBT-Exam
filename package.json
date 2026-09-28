@@ -1,0 +1,38 @@
+{
+  "name": "school-cbt-app",
+  "version": "1.0.0",
+  "description": "School CBT exam management app for admin, teachers, and student dashboards.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node server.js",
+    "desktop": "electron .",
+    "dist": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "com.school.cbt.student",
+    "productName": "School CBT Student",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "server.js",
+      "public/**/*",
+      "data/**/*",
+      "package.json",
+      "package-lock.json",
+      "main.js"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ]
+    }
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "electron": "^31.7.1",
+    "electron-builder": "^24.13.0"
+  }
+}
